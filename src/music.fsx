@@ -7,6 +7,10 @@ type NaturalPitch =
   | A
   | B
 
+type AccidentialPitch =
+  | Sharp of NaturalPitch
+  | Flat of NaturalPitch
+
 [<EntryPoint>]
 let main args =
   printfn "Arguments passed to function : %A" args
