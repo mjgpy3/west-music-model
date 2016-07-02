@@ -52,6 +52,8 @@ let rec transpose direction amount note = match direction, amount with
 
 let tone direction = transpose direction 2
 
+let middleC = C 0 |> Natural
+
 [<EntryPoint>]
 let main args =
   printfn "%A" <| Seq.map (tone Up) [A 0 |> Natural; B 0 |> Natural]
