@@ -56,11 +56,23 @@ let rec transpose direction amount note = match direction, amount with
 let octave direction =
   transpose direction 12
 
+let firstInversion = function
+  | Notes (note :: rest) -> List.append rest [octave Up note] |> Notes
+  | c -> failwithf "Not a valid chord, must have notes %A" c
+
+let rec inversion n chord = match n with
+  | 0 -> chord
+  | n -> firstInversion chord |> inversion (n - 1)
+
 let tone direction = transpose direction 2
 
-let middleC = C 0 |> Natural
+let middleC =
+  C 0 |> Natural
+
+let exampleCChord =
+  Notes [middleC; E 0 |> Natural; G 0 |> Natural]
 
 [<EntryPoint>]
 let main args =
-  printfn "%A" <| Seq.map (octave Up) [A 0 |> Natural; B 0 |> Natural]
+  printfn "%A" <| inversion 1 exampleCChord
   0
