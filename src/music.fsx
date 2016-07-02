@@ -15,6 +15,9 @@ type Note =
   | Accidental of AccidentalPitch
   | Natural of NaturalPitch
 
+type Chord =
+  | Notes of Note list
+
 type Direction = | Up | Down
 
 let semitone direction note = match direction, note with
@@ -50,11 +53,14 @@ let rec transpose direction amount note = match direction, amount with
   | Up, n -> semitone Up note |> transpose Up (n - 1)
   | Down, n -> semitone Down note |> transpose Up (n - 1)
 
+let octave direction =
+  transpose direction 12
+
 let tone direction = transpose direction 2
 
 let middleC = C 0 |> Natural
 
 [<EntryPoint>]
 let main args =
-  printfn "%A" <| Seq.map (tone Up) [A 0 |> Natural; B 0 |> Natural]
+  printfn "%A" <| Seq.map (octave Up) [A 0 |> Natural; B 0 |> Natural]
   0
