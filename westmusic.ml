@@ -80,13 +80,13 @@ let scale_from_offsets offsets tonic =
   List.map (transpose_note Higher tonic) offsets;;
 
 let natural_major_offset =
-  [ Zero; n2; n4; n5; n7; n9; n11; n12 ];;
+  [Zero; n2; n4; n5; n7; n9; n11; n12];;
 
 let natural_major_scale_from_tonic =
   scale_from_offsets natural_major_offset;;
 
 let natural_minor_offset =
-  [ Zero; n2; n3; n5; n7; n8; n10; n12 ];;
+  [Zero; n2; n3; n5; n7; n8; n10; n12];;
 
 let natural_minor_scale_from_tonic =
   scale_from_offsets natural_minor_offset;;
@@ -96,5 +96,35 @@ let blues_offset =
 
 let blues_scale_from_tonic =
   scale_from_offsets natural_minor_offset;;
+
+let dorian_mode_offset =
+  [Zero; n2; n3; n5; n7; n9; n10; n12];;
+
+let dorian_mode_scale_from_tonic =
+  scale_from_offsets dorian_mode_offset;;
+
+let locrian_mode_offset =
+  [Zero; n1; n3; n5; n6; n8; n10; n12];;
+
+let locrian_mode_scale_from_tonic =
+  scale_from_offsets locrian_mode_offset;;
+
+let lydian_mode_offset =
+  [Zero; n2; n4; n6; n7; n9; n11; n12];;
+
+let lydian_mode_scale_from_tonic =
+  scale_from_offsets lydian_mode_offset;;
+
+let pentatonic_scale_offset =
+  [Zero; n2; n4; n7; n9; n12];;
+
+let pentatonic_scale_from_tonic =
+  scale_from_offsets pentatonic_scale_offset;;
+
+let phrygian_mode_offset =
+  [Zero; n1; n3; n5; n7; n8; n10; n12];;
+
+let phrygian_mode_scale_from_tonic =
+  scale_from_offsets phrygian_mode_offset;;
 
 let () = print_endline "Hello, World!"
